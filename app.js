@@ -1,6 +1,7 @@
 var restify = require('restify');
 var request = require('request');
 var config = require('./config.js');
+var throttle = require('./lib/throttle');
 
 function requestHandler(req, res, next) {
 	var target = config.target.host;
@@ -20,6 +21,7 @@ function bootstrapServer(server) {
 }
 
 var proxySecure = restify.createServer(config.ssl);
+proxySecure.use(throttle());
 bootstrapServer(proxySecure);
 
 proxySecure.listen(1337, function(){
