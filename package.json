@@ -1,0 +1,19 @@
+{
+  "name": "throttily",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "alessandro.cattermartinez@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "request": "~2.57.0",
+    "restify": "~3.0.3"
+  },
+  "devDependencies": {
+    "chai": "~3.0.0",
+    "mocha": "~2.2.5"
+  }
+}
