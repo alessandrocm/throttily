@@ -2,10 +2,14 @@ var fs = require('fs');
 
 module.exports = {
 	target:		{
-		host:	'www.google.com'//'services-stage0.globaledit.com'
+		host:			'www.google.com'//'services-stage0.globaledit.com'
 	},
 	ssl:		{
 		key:            fs.readFileSync('certs/certificate.key'),
  		certificate:    fs.readFileSync('certs/certificate.pem')
 	},
+	limits:		{
+		rate:			1,
+		burst:			1
+	}
 }

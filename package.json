@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "request": "~2.57.0",
-    "restify": "~3.0.3"
+    "restify": "~3.0.3",
+    "lru-cache": "~2.6.4",
+    "assert-plus": "~0.1.5"
   },
   "devDependencies": {
     "chai": "~3.0.0",

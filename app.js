@@ -9,7 +9,7 @@ function requestHandler(req, res, next) {
 	var protocol = (req.isSecure()) ? 'https://' : 'http://';
 	var target = config.target.host;
 	console.info('Forwarding ' + req.url + ' to ' + protocol + target);
-	req.pipe(request(protocol + target + req.url)).pipe(res);
+	req.pipe(request(protocol + target + req.url)).pipe(res); //The magic happens here.
 	
 	next();
 }
@@ -22,7 +22,7 @@ function afterHandler(req, res, route, error) {
 }
 
 function bootstrapServer(server) {
-	server.use(throttle());
+	server.use(throttle({}));
 	server.get(/.*/,requestHandler);
 	server.put(/.*/,requestHandler);
 	server.post(/.*/,requestHandler);
