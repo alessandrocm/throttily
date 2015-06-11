@@ -2,7 +2,8 @@ var restify = require('restify');
 var request = require('request');
 var config = require('./config.js');
 var throttle = require('./lib/throttle');
-var securePort = process.env.HTTPS_PORT || 1337;
+var tokenStrategy = require('./lib/tokenStrategy');
+var securePort = process.env.HTTPS_PORT || 3000;
 var unsecurePort = process.env.HTTP_PORT || 3001;
 
 function requestHandler(req, res, next) {
@@ -15,14 +16,19 @@ function requestHandler(req, res, next) {
 }
 
 function afterHandler(req, res, route, error) {
-	console.info('Handlers complete.');
 	if (error) {
+		console.info('Handlers complete with errors.');
 		console.error(error);
+	}
+	else {
+		console.info('Handlers complete.');
 	}
 }
 
 function bootstrapServer(server) {
-	server.use(throttle({}));
+	server.use(throttle({
+		throttleStrategy:	tokenStrategy		//This handles the throttling
+	}));
 	server.get(/.*/,requestHandler);
 	server.put(/.*/,requestHandler);
 	server.post(/.*/,requestHandler);

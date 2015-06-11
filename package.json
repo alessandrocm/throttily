@@ -12,7 +12,9 @@
     "request": "~2.57.0",
     "restify": "~3.0.3",
     "lru-cache": "~2.6.4",
-    "assert-plus": "~0.1.5"
+    "assert-plus": "~0.1.5",
+    "util": "~0.10.3",
+    "tedious": "~1.11.0"
   },
   "devDependencies": {
     "chai": "~3.0.0",
