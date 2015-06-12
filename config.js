@@ -2,7 +2,7 @@ var fs = require('fs');
 
 module.exports = {
 	target:		{
-		host:			'www.google.com'
+		host:			'dev2.globaledit.com'
 	},
 	ssl:		{
 		key:            fs.readFileSync('certs/certificate.key'),
@@ -12,14 +12,11 @@ module.exports = {
 		rate:			2,
 		burst:			1
 	},
-	db:			{
-		userName:		'[DB USER]',
-		password:		'[DB PASSWORD]',
-		server:			'[DB HOST]',
-		database:		'[DB NAME]',
-		useColumnNames:	true,
-		options:		{
-			encrypt:	false
-		}
+	throttle:	{
+		defaultLimit:	{
+			rate:	1,
+			burst:	1
+		},
+		clientKey:		'authorization'
 	}
-}
+};
